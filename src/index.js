@@ -21,4 +21,3 @@ app.listen(port, () => {
   })
 
 // TODO: Migrations
-// TODO: Validações

@@ -8,7 +8,7 @@ module.exports = {
             const filmes = await Filme.findAll();
             response = res.status(200).json(filmes);
         } catch (error){
-            response = res.status(400).json(error.message);
+            response = res.status(500).json(error.message);
         } finally{
             return response
         }
@@ -23,7 +23,7 @@ module.exports = {
             }});
             response = res.status(200).json(filme);
         } catch (error){
-            response = res.status(400).json(error.message);
+            response = res.status(500).json(error.message);
         } finally{
             return response
         }
@@ -37,9 +37,12 @@ module.exports = {
                 updatedAt: Date.now()
             });
 
-            response = res.status(200).json(novoFilme);
+            response = res.status(201).json({
+                "message": "Filme inserido com sucesso.",
+                ...novoFilme.dataValues
+            });
         } catch (error){
-            response = res.status(400).json(error.message);
+            response = res.status(500).json(error.message);
         } finally{
             return response
         }
@@ -55,12 +58,12 @@ module.exports = {
             }});
 
             if (novoFilme == 1) {
-                response = res.status(200).json({ "message": "Cadastro atualizado com sucesso" })
+                response = res.status(200).json({ "message": "Cadastro atualizado com sucesso." })
             } else {
-                response = res.status(400).json({ "message": "Falha ao atualizar cadastro" })
+                response = res.status(400).json({ "message": "Falha ao atualizar cadastro." })
             }
         } catch (error){
-            response = res.status(400).json(error.message);
+            response = res.status(500).json(error.message);
         } finally{
             return response
         }
@@ -74,9 +77,14 @@ module.exports = {
                 id: Number(id)
             }});
 
-            response = res.status(200).json(filme);
+            if (filme == 1) {
+                response = res.status(200).json({ "message": "Filme removido com sucesso." })
+            } else {
+                response = res.status(400).json({ "message": "Falha ao remover filme." })
+            }
+
         } catch (error){
-            response = res.status(400).json(error.message);
+            response = res.status(500).json(error.message);
         } finally{
             return response
         }
