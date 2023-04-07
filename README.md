@@ -32,7 +32,7 @@ npm run start
 
 ## 💻 Utilizando a API
 **IMPORTANTE: O servidor é criado utilizando a porta 3000. Certifique-se que essa porta está liberada para uso no seu dispositivo.**  
-Com o servidor rodando, a URL do mesmo é `http://localhost:3000`. Todas as rotas daqui em diante referidas **devem precedir à rota raiz**.  
+Com o servidor rodando, a URL do mesmo é `http://localhost:3000`. Todas as rotas daqui em diante referidas **devem precedir a rota raiz**.  
 
 ## GET
 
