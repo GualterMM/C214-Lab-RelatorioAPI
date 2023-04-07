@@ -24,11 +24,12 @@ Filme.init({
         }
     },
     lancamento: {
-        type: DataTypes.DATEONLY,
+        type: DataTypes.STRING(10),
         allowNull: false,
         validate:{
-            notEmpty: {
-                msg: "O campo \"lancamento\" não pode ser vazio."
+            is: {
+                args: [/^[0-9]{2}\-[0-9]{2}\-[0-9]{4}$/],
+                msg: "O campo \"lancamento\" deve estar no formato DD-MM-YYYY."
             }
         }
     },
