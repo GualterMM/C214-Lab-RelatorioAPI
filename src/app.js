@@ -11,7 +11,7 @@ app.use(express.urlencoded({extended: true}));
 
 sequelize.sync().then( () => {
   app.get('/', function (req, res) {
-    res.send('Você chegou no diretório raiz. Cheque a documentação no GitHub para se orientar sobre as rotas da API.')
+    return res.status(200).send('Você chegou no diretório raiz. Cheque a documentação no GitHub para se orientar sobre as rotas da API.')
   })
   
   app.get('/api', function (req, res) {
@@ -37,10 +37,9 @@ sequelize.sync().then( () => {
               'statusCode':404,
               'stack':`http://localhost:${port}`
             },
-             message: 'A rota inserida é inválida.'
+              message: 'A rota inserida é inválida.'
           });
     });
 });
-
 
 module.exports = {app, port};
